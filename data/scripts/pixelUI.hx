@@ -1,47 +1,40 @@
 final pixelZoom:Float = 6.0;
 final yAdjust = -50;
 
-function onCreatePost()
-{
-	for (i in [boyfriendGroup, dadGroup])
-	{
+function onCreatePost() {
+	for (i in [boyfriendGroup, dadGroup]) {
 		for (j in i.members)
 			j.camDisplacement = 10;
 	}
-	
+
 	cameraSpeed = 4;
 	FlxG.usePixelPerfectRendering = true;
-	
+
 	countdownPrefix = 'pixelUI/';
-	
+
 	playHUD.comboTween = false;
-	
+
 	playHUD.ratingPrefix = 'pixelUI/ratings/';
 	playHUD.comboPrefix = 'pixelUI/combo/';
 }
 
-function onPopUpScorePost(note, ratingData, rating, numGroup)
-{
+function onPopUpScorePost(note, ratingData, rating, numGroup) {
 	rating.antialiasing = false;
 	rating.setScale(pixelZoom * 0.85, pixelZoom * 0.85);
 	rating.updateHitbox();
 	rating.y += yAdjust * 1.2;
-	
+
 	var daLoop = 0;
-	for (numScore in playHUD.ratingNumGroup.members)
-	{
+	for (numScore in playHUD.ratingNumGroup.members) {
 		numScore.antialiasing = false;
 		numScore.setScale(6, 6);
 		numScore.y += yAdjust;
 	}
 }
 
-function onCountdownTick(tick)
-{
-	if (tick >= 1 && tick <= 3)
-	{
-		final spr = switch (tick)
-		{
+function onCountdownTick(tick) {
+	if (tick >= 1 && tick <= 3) {
+		final spr = switch (tick) {
 			case 1:
 				countdownReady;
 			case 2:
@@ -54,4 +47,14 @@ function onCountdownTick(tick)
 		spr.screenCenter();
 		spr.antialiasing = false;
 	}
+}
+
+var last = 0;
+
+function onSpawnNoteSplash(splash) {
+	final rand = FlxG.random.int(1, 3, [last]);
+	last = rand;
+
+	splash.playAnim('note0-$rand', true);
+	splash.blend = BlendMode.SCREEN;
 }
