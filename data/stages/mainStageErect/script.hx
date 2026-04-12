@@ -49,6 +49,8 @@ function onLoad()
 	lightAbove = new FlxSprite(804, -117).loadGraphic(Paths.image('$path/lightAbove'));
 	lightAbove.zIndex = 4500;
 	add(lightAbove);
+	
+	brightLightSmall.blend = orangeLight.blend = lightgreen.blend = lightred.blend = lightAbove.blend = 0;
 }
 
 function makeCharShader(_brightness, _hue, _contrast, _saturation)
