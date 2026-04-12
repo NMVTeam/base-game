@@ -8,5 +8,5 @@
     "freeplayColor": "#9271FD",
     "freeplayIcon": "dad",
 
-    "difficulties": ["easy", "normal", "hard", "erect", "nightmare"]
+    "difficulties": ["easy", "Normal", "hard", "erect", "nightmare"]
 }
